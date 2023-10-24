@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-block_id: EEB12558-B4FA-4F34-A9FD-3F5890E9CD3F
-name: EmbeddingRetrievalModule
+block_id: <block-id>
+name: ModuleName
 version: 0.0.1
-artifacts_path: /opt/app-root/src/.cache/huggingface/sentence_transformers/sentence-transformers_all-MiniLM-L6-v2
+artifacts_path: /absolute/path/to/model/artifacts

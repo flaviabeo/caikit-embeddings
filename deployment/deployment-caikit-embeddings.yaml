@@ -16,12 +16,6 @@ spec:
         - name: cos-pvc
           persistentVolumeClaim:
             claimName: pvc-caikit-embeddings-cos
-        - name: cache-pvc
-          persistentVolumeClaim:
-            claimName: pvc-caikit-embeddings-cache
-        - name: models-pvc
-          persistentVolumeClaim:
-            claimName: pvc-caikit-embeddings-models
         - name: tls-secret
           secret:
             secretName: tls-secret
@@ -44,6 +38,8 @@ spec:
               value: /opt/app-root/src/.cache/huggingface/hub/
             - name: HUGGINGFACE_HUB_CACHE
               value: $(TRANSFORMERS_CACHE)
+            - name: MODELS_DIR
+              value: '["sentence-transformers_all-MiniLM-L6-v2","slate.rtvr271M"]'
             - name: MODELS_LIST
               value: '["mini", "slate"]'
           ports:
@@ -54,10 +50,10 @@ spec:
             - name: cos-pvc
               mountPath: /opt/app-root/src/.cache/huggingface/sentence_transformers/
               subPath: models/
-            - name: cache-pvc
+            - name: cos-pvc
               mountPath: /opt/app-root/src/.cache/huggingface/hub/
               subPath: transformers_cache/
-            - name: models-pvc
+            - name: cos-pvc
               mountPath: /opt/app-root/src/demo/models/
             - name: tls-secret
               mountPath: /mnt

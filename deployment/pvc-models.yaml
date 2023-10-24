@@ -2,38 +2,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: pvc-caikit-embeddings-cos
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: '1'
-  storageClassName: ibmc-s3fs-smart-regional
-  volumeMode: Filesystem
-status:
-  phase: Bound
-  accessModes:
-    - ReadWriteMany
-  capacity:
-    storage: '1'
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: pvc-caikit-embeddings-cache
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: '1'
-  storageClassName: ibmc-s3fs-smart-regional
-  volumeMode: Filesystem
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: pvc-caikit-embeddings-models
   annotations:
     ibm.io/cos-service: ''
     ibm.io/endpoint: 'https://s3.direct.us-south.cloud-object-storage.appdomain.cloud'

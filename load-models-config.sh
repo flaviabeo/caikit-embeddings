@@ -1,1 +1,0 @@
-cd demo && cd models/mini && cd ../../ && cd models/mini-rr && cd ../../ && cd models/mini-ss && cd ../../ &&cd models/slate && cd ../../ && cd models/slate-rr && cd ../../ && cd models/slate-ss && cd ../../ && cd server
