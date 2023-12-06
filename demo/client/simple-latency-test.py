@@ -66,13 +66,7 @@ if __name__ == '__main__':
             request, metadata=[("mm-model-id", MODEL_ID)]
         )
         # Print response
-        print("INPUTS TEXTS: ", texts)
-        print("RESULTS: [")
-        for d in response.results:
-            woo = d.WhichOneof("data")  # which one of data_<float_type>s did we get?
-            print(getattr(d, woo).values)
-        print("]")
-        print("LENGTH: ", len(response.results), " x ", len(getattr(response.results[0], woo).values))
+        print("request completed")
     tok = timeit.default_timer()
 
     print(f"Warmup terminated in {tok-tik} sec.")

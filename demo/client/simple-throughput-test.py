@@ -24,7 +24,7 @@ caikit.configure(CONFIG_PATH)
 
 # NOTE: The model id needs to be a path to folder.
 # NOTE: This is relative path to the models directory
-MODEL_ID = os.getenv("MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+MODEL_ID = os.getenv("MODEL")
 
 inference_service = ServicePackageFactory().get_service_package(
     ServicePackageFactory.ServiceType.INFERENCE,
@@ -67,13 +67,7 @@ if __name__ == '__main__':
             request, metadata=[("mm-model-id", MODEL_ID)]
         )
         # Print response
-        print("INPUTS TEXTS: ", texts_dataset)
-        print("RESULTS: [")
-        for d in response.results:
-            woo = d.WhichOneof("data")  # which one of data_<float_type>s did we get?
-            print(getattr(d, woo).values)
-        print("]")
-        print("LENGTH: ", len(response.results), " x ", len(getattr(response.results[0], woo).values))
+        print("request completed")
 
     def getLatency(lat,i):
         s = timeit.default_timer()
@@ -106,6 +100,7 @@ if __name__ == '__main__':
     latList = list(filter(lambda x: x is not None, latList))
 
     lat= np.array(latList)
+    print(MODEL_ID)
     print('**** THROUGHPUT TEST REPORT ****')
     print("Total Requests: ", ITERATIONS)
     print("Requests per Sec: ", REQUESTS_PER_SEC)
